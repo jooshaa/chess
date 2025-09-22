@@ -49,7 +49,7 @@ export const authentication = async (req, res) => {
         //hash procedure
         const hashedPasswrod = hashPass(password)
         decodedValue.password = hashedPasswrod
-        const newStudent = await Student.create(decodedValue)
+        const newStudent = await User.create(decodedValue)
 
         const payload = getTokenPayload(newStudent)
 
