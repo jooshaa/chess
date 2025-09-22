@@ -1,0 +1,10 @@
+{
+    "db_name": "chess",
+    "db_username": "postgres",
+    "db_password": "root",
+    "db_host": "localhost",
+    "db_port": 5432,
+    "port": 3000,
+
+    "salt": 10
+}
