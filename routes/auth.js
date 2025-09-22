@@ -11,7 +11,9 @@ const { authToken } = require('../middleware/authMiddleware.js')
 
 router.post('/register', register)
 router.post('/verify-otp', authentication)
-router.post('/login', authToken, login)
-router.post('/logout', authToken, logout)
+router.post('/login',  login)
+router.post('/logout',  logout)
+
+module.exports = router
 
 

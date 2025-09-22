@@ -39,7 +39,7 @@ const register = async (req, res) => {
 }
 
 
-export const authentication = async (req, res) => {
+ const authentication = async (req, res) => {
     try {
         const { otp } = req.body
 
@@ -71,7 +71,7 @@ export const authentication = async (req, res) => {
         errorMessage(res, error, 500, "Error")
     }
 }
-export const login = async (req, res) => {
+ const login = async (req, res) => {
     try {
         const { email, password } = req.body
         const body = await User.findOne({ where: { email } })
@@ -102,7 +102,7 @@ export const login = async (req, res) => {
     }
 }
 
-export const logout = async (req, res) => {
+ const logout = async (req, res) => {
     try {
         res.clearCookie("refreshToken", {
             httpOnly: true,
@@ -112,3 +112,5 @@ export const logout = async (req, res) => {
         return errorMessage(res, error.message, 500, "Error in logout")
     }
 }
+
+module.exports = {logout, login, authentication, register}

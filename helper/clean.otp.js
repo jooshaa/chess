@@ -1,7 +1,7 @@
 // import { Otp } from "../models/otp";
 const Otp = require("../models/otp");
 
-export function cleanOtp(body = {}, expiration_time) {
+ function cleanOtp(body = {}, expiration_time) {
     const delay = new Date(expiration_time).getTime() - Date.now();
 
     setTimeout(async () => {

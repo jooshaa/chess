@@ -4,13 +4,15 @@
 // import { sequelize } from './config/db.js'
 // import {router} from './routes/index.router.js'
 // import cookieParser from 'cookie-parser'
+const router = require('./routes/index.router')
 const express = require('express')
-const cookieParser = requrie('cookie-parser')
+const cookieParser = require('cookie-parser')
+const config =require('config')
+const sequelize  = require('./config/db')
 const app = express()
 app.use(express.json())
 app.use('/api', router)
 app.use(cookieParser())
-
 
 const PORT = config.get('port')?? 3030
 
