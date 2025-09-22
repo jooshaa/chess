@@ -6,5 +6,20 @@
     "db_port": 5432,
     "port": 3000,
 
-    "salt": 10
+    "salt": 10,
+
+
+    "myEmail": "kutmonbekovjoshqin0@gmail.com",
+    "myEmailPass": "auwb igck mcgo kzls",
+
+    "otp_secret": "KVKFKRCPNZQUYMLXOVYDSQKJKZDTSRLD",
+
+    "access_key": "myverysecret",
+    "refresh_key": "myverysecret",
+    "access_time": "15h",
+    "refresh_time": "15d",
+
+    "iv": "adssd123",
+    "crypt_password": "JudaKuchliMaxfiyPassword"
+
 }
