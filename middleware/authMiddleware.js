@@ -1,6 +1,7 @@
-import { JwtService } from "../utils/jwt.js";
-
-export async function authToken (req, res, next) {
+// import { JwtService } from "../utils/jwt.js";
+const JwtService = require('../utils/jwt.js')
+// export
+module.exports= async function authToken (req, res, next) {
     try {
         const authHeader = req.headers.authorization;
         if (!authHeader) {

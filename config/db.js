@@ -1,7 +1,9 @@
-import {Sequelize} from "sequelize";
-import  config   from "config";
+// import {Sequelize} from "sequelize";
+// import  config   from "config";
+const {Sequelize} = require("sequelize")
+const config = require('config')
 
-export const sequelize = new Sequelize(
+module.exports= new Sequelize(
     config.get("db_name"),
     config.get("db_username"),
     config.get("db_password"),

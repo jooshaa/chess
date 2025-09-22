@@ -1,7 +1,7 @@
 const crypto = require("crypto");
-import crypto from "crypto"
+// import crypto from "crypto"
 const config = require("config");
-import  config  from 'config'
+// import  config  from 'config'
 var password = config.get("crypt_password");
 var iv = Buffer.from(config.get("iv")); // Initialization vector
 var ivstring = iv.toString("hex");
@@ -26,8 +26,8 @@ function password_derive_bytes(password, salt, iterations, len) {
   }
   return Buffer.alloc(len, key);
 }
-
-export async function encode(string) {
+// export
+ async function encode(string) {
   var key = password_derive_bytes(password, "", 100, 32);
   var cipher = crypto.createCipheriv("aes-256-cbc", key, ivstring);
   var part1 = cipher.update(string, "utf8");
@@ -35,13 +35,15 @@ export async function encode(string) {
   const encrypted = Buffer.concat([part1, part2]).toString("base64");
   return encrypted;
 }
-
-export async function decode(string) {
+// export
+ async function decode(string) {
   var key = password_derive_bytes(password, "", 100, 32);
   var decipher = crypto.createDecipheriv("aes-256-cbc", key, ivstring);
   var decrypted = decipher.update(string, "base64", "utf8");
   decrypted += decipher.final();
   return decrypted;
 }
+module.exports = { encode, decode };
+
 
 

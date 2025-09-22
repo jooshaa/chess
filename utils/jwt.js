@@ -1,5 +1,7 @@
-import jwt from 'jsonwebtoken'
-import  config  from 'config'
+// import jwt from 'jsonwebtoken'
+// import  config  from 'config'
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
 class JwtService {
     constructor(accessKey, refreshKey, accessTime, refreshTime) {
@@ -29,11 +31,17 @@ class JwtService {
     }
 
 }
-export const JwtService = new JwtService(
+// export const JwtService = new JwtService(
+//         config.get("access_key"),
+//         config.get("refresh_key"),
+//         config.get("access_time"),
+//         config.get("refresh_time")
+//     )
+
+module.exports = new JwtService(
         config.get("access_key"),
         config.get("refresh_key"),
         config.get("access_time"),
         config.get("refresh_time")
     )
-
 

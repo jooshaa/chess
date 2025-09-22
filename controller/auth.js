@@ -1,17 +1,23 @@
-import { User } from "../models/user.js";
-import { errorMessage, successMessage } from "../helper/succ_err_helper/succ_err.js";
-import { compareHash, hashPass } from "../utils/bcrypt.js";
-import { newOtp } from "./otp.main.js";
-import { decode } from "../helper/crypt.js";
-import { Otp } from "../models/otp.js";
-import { JwtService } from "../utils/jwt.js";
-
+// import { User } from "../models/user.js";
+// import { errorMessage, successMessage } from "../helper/succ_err_helper/succ_err.js";
+// import { compareHash, hashPass } from "../utils/bcrypt.js";
+// import { newOtp } from "./otp.main.js";
+// import { decode } from "../helper/crypt.js";
+// import { Otp } from "../models/otp.js";
+// import { JwtService } from "../utils/jwt.js";
+const User  = require('../models/user.js')
+const {errorMessage, successMessage} = require("../helper/succ_err_helper/succ_err.js")
+const {hashPass, compareHash} = require("../utils/bcrypt.js")
+const newOtp = require("./otp.main.js")
+const {decode } = require('../helper/crypt.js')
+const Otp = require("../models/otp.js")
+const JwtService = require("../utils/jwt.js")
 
 
 function getTokenPayload(user) {
     return { id: user.id, email: user.email, role: user.role }
 }
-export const register = async (req, res) => {
+const register = async (req, res) => {
     try {
 
         const { email, password } = req.body

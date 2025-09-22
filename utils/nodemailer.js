@@ -1,5 +1,7 @@
-import nodemailer from 'nodemailer'
-import { config } from 'config'
+// import nodemailer from 'nodemailer'
+// import { config } from 'config'
+const nodemailer = require('nodemailer')
+const config = require('config')
 
 
 const transporter = nodemailer.createTransport({
@@ -13,8 +15,8 @@ const transporter = nodemailer.createTransport({
 //  console.log( config.get("myEmail"));
 //  console.log( config.get("myEmailPass"));
  
-
-export async function sendMail(to, otp) {
+// export
+ async function sendMail(to, otp) {
     try {
         
         const info = await transporter.sendMail({
@@ -37,5 +39,7 @@ export async function sendMail(to, otp) {
         
     }
 }
+
+module.exports = sendMail
 
 

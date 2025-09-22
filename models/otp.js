@@ -1,7 +1,9 @@
-import { sequelize } from '../config/db';
-import { DataTypes } from "sequelize"
-
-export const Otp = sequelize.define('otp', {
+// import { sequelize } from '../config/db';
+// import { DataTypes } from "sequelize"
+const sequelize = require('../config/db.js')
+const { DataTypes } = require('sequelize')
+// export
+ const Otp = sequelize.define('otp', {
     id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -25,4 +27,5 @@ export const Otp = sequelize.define('otp', {
 
 );
 
+module.exports = Otp
 

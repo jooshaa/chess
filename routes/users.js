@@ -1,7 +1,10 @@
-import express from 'express'
-import {createUser, deleteUser, getAllUsers, getUserById, updateUser}  from '../controller/users.js'
-import { authToken } from '../middleware/authMiddleware.js'
-export const router = express.Router()
+// import express from 'express'
+// import {createUser, deleteUser, getAllUsers, getUserById, updateUser}  from '../controller/users.js'
+// import { authToken } from '../middleware/authMiddleware.js'
+// export const router = express.Router()
+const router = require('express').Router()
+const { authToken } = require('../middleware/authMiddleware.js')
+const {} = require('../controller/users.js')
 
 router.get('/:id',authToken, getUserById)
 router.post('/',authToken, createUser)

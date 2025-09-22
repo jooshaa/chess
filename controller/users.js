@@ -1,10 +1,13 @@
 
-import { User } from "../models/user.js";
-import { errorMessage, successMessage } from "../helper/succ_err_helper/succ_err.js";
-import { hashPass } from "../utils/bcrypt.js";
+// import { User } from "../models/user.js";
+// import { errorMessage, successMessage } from "../helper/succ_err_helper/succ_err.js";
+// import { hashPass } from "../utils/bcrypt.js";
 
+const User = require('../models/user.js')
+const {errorMessage, successMessage} = require("../helper/succ_err_helper/succ_err.js")
+const {hashPass} = require("../utils/bcrypt.js")
 
-export const createUser = async (req, res) => {
+ const createUser = async (req, res) => {
     if (!req.body) {
         return errorMessage(res, "body not found", 404, "error")
     }
@@ -27,7 +30,7 @@ export const createUser = async (req, res) => {
 
 }
 
-export const getAllUsers = async (req, res) => {
+ const getAllUsers = async (req, res) => {
     try {
         const users = await User.findAll()
         return successMessage(res, 200, "found", users)
@@ -36,7 +39,7 @@ export const getAllUsers = async (req, res) => {
     }
 }
 
-export const getUserById = async (req, res) => {
+ const getUserById = async (req, res) => {
     try {
         const { id } = req.params;
         const user = await User.findByPk(id, { attributes: { exclude: ["password"] } });
@@ -48,7 +51,7 @@ export const getUserById = async (req, res) => {
     }
 };
 
-export const updateUser = async (req, res) => {
+ const updateUser = async (req, res) => {
     try {
         const { id } = req.params
         const user = await User.findByPk(id)
@@ -74,7 +77,7 @@ export const updateUser = async (req, res) => {
 }
 
 
-export const deleteUser = async (req, res) => {
+ const deleteUser = async (req, res) => {
     try {
         const { id } = req.params;
         const user = await User.findByPk(id);
@@ -88,3 +91,5 @@ export const deleteUser = async (req, res) => {
         return errorMessage(res, error.message, 500, "Error in deleting ");
     }
 };
+
+module.exports = {createUser,getAllUsers,updateUser,getUserById,deleteUser}
