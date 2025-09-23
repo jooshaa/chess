@@ -4,10 +4,10 @@
 // import { hashPass } from "../utils/bcrypt.js";
 
 const User = require('../models/user.js')
-const {errorMessage, successMessage} = require("../helper/succ_err_helper/succ_err.js")
-const {hashPass} = require("../utils/bcrypt.js")
+const { errorMessage, successMessage } = require("../helper/succ_err_helper/succ_err.js")
+const { hashPass } = require("../utils/bcrypt.js")
 
- const createUser = async (req, res) => {
+const createUser = async (req, res) => {
     if (!req.body) {
         return errorMessage(res, "body not found", 404, "error")
     }
@@ -30,7 +30,7 @@ const {hashPass} = require("../utils/bcrypt.js")
 
 }
 
- const getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res) => {
     try {
         const users = await User.findAll()
         return successMessage(res, 200, "found", users)
@@ -39,19 +39,19 @@ const {hashPass} = require("../utils/bcrypt.js")
     }
 }
 
- const getUserById = async (req, res) => {
+const getUserById = async (req, res) => {
     try {
         const { id } = req.params;
         const user = await User.findByPk(id, { attributes: { exclude: ["password"] } });
         if (!user) return errorMessage(res, "User not found", 404, "Not found");
-       
+
         return successMessage(res, 200, "User found", user);
     } catch (error) {
         return errorMessage(res, error.message, 500, "Error in getting");
     }
 };
 
- const updateUser = async (req, res) => {
+const updateUser = async (req, res) => {
     try {
         const { id } = req.params
         const user = await User.findByPk(id)
@@ -77,14 +77,14 @@ const {hashPass} = require("../utils/bcrypt.js")
 }
 
 
- const deleteUser = async (req, res) => {
+const deleteUser = async (req, res) => {
     try {
         const { id } = req.params;
         const user = await User.findByPk(id);
         if (!user) return errorMessage(res, "Not found", 404, "Not found");
 
         await user.destroy();
-       
+
         return successMessage(res, 200, " deleted");
 
     } catch (error) {
@@ -92,4 +92,4 @@ const {hashPass} = require("../utils/bcrypt.js")
     }
 };
 
-module.exports = {createUser,getAllUsers,updateUser,getUserById,deleteUser}
+module.exports = { createUser, getAllUsers, updateUser, getUserById, deleteUser }

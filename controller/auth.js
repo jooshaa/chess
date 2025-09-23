@@ -25,11 +25,16 @@ const register = async (req, res) => {
         if (!email || !password) {
             return errorMessage(res, "not found", 400, "error")
         }
-        const candidate = User.findOne({ where: { email } })
+        const candidate =await User.findOne({ where: { email } })
+        
+        
         if (candidate) {
             return errorMessage(res, "user already exists", 400, "error")
         }
-        await newOtp
+        
+        
+        
+        await newOtp(req.body)
         return successMessage(res, 200, "Code sent")
     } catch (err) {
         errorMessage(res, err, 500, "error in register")

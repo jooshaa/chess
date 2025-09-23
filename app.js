@@ -11,8 +11,10 @@ const config =require('config')
 const sequelize  = require('./config/db')
 const app = express()
 app.use(express.json())
-app.use('/api', router)
 app.use(cookieParser())
+app.use('/api', router)
+
+
 
 const PORT = config.get('port')?? 3030
 

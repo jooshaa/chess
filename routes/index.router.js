@@ -4,8 +4,9 @@
 // export const router = express.Router()
 
 const router = require('express').Router()
-const authRoute = require('./users')
-const userRoute = require('./auth')
+
+const authRoute = require('./auth')
+const userRoute = require('./users')
 
 router.use("/auth", authRoute)
 router.use("/user", userRoute)

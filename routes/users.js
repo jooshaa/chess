@@ -7,9 +7,9 @@ const { getUserById, createUser, getAllUsers, updateUser, deleteUser } = require
 const {authToken } = require('../middleware/authMiddleware.js')
 
 
+router.get('/', getAllUsers)
 router.get('/:id', getUserById)
 router.post('/', createUser)
-router.get('/', getAllUsers)
 router.patch('/:id',  updateUser)
 router.delete('/:id',  deleteUser)
 
