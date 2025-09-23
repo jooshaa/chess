@@ -7,8 +7,13 @@ const router = require('express').Router()
 
 const authRoute = require('./auth')
 const userRoute = require('./users')
+const playerRoute = require('./player')
+const tournamentRoute = require('./tournament')
+
 
 router.use("/auth", authRoute)
 router.use("/user", userRoute)
+router.use("/player", playerRoute)
+router.use("/tournament", tournamentRoute)
 
 module.exports = router
